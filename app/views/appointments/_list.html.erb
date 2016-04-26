@@ -1,0 +1,43 @@
+<div class="media">
+  <div class="media-body">
+    
+    <table class="table table-hover">
+  <thead>
+    <tr>
+      <th><%= t 'Date' %></th>
+      <th><%= t 'Time' %></th>
+      <th><%= t 'Reason' %></th>
+      <th><%= t 'Patient Name' %></th>
+      <th><%= t 'Patient Email' %></th>
+      <th><%= t 'Patient Phone Number' %></th>
+      <% if @history %>
+        <th><%= t 'Status' %></th>
+      <% end %>
+      <th colspan="4"></th>
+    </tr>
+      
+  </thead>
+
+  <tbody>
+    <% @appointments.each do |appointment| %>
+      <tr>
+        <td><%= appointment.date %></td>
+        <td><%= appointment.time.strftime("%I:%m %p") %></td>
+        <td><%= appointment.service %></td>
+        <td><%= appointment.client_name %></td>
+        <td><%= appointment.client_email %></td>
+        <td><%= appointment.client_phone %></td>
+        <% if @history %>
+          <td><%= t :"appointment.cancel.#{appointment.status}" %></td>
+        <% end %>
+        <td><%= link_to 'Show', appointment,class: 'btn btn-mini btn-primary' %></td>
+        <td><%= link_to 'Edit', edit_appointment_path(appointment),class: 'btn btn-mini btn-success'  %></td>
+         <td><%= link_to 'Remove', appointment, method: :delete, class: 'btn btn-mini btn-danger', data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+  </div>
+</div>
+
+<br>

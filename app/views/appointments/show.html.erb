@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+
+<p>
+  <strong><%=  'Date' %>:</strong>
+  <%= @appointment.date %>
+</p>
+
+<p>
+  <strong><%=  'Time' %>:</strong>
+  <%= @appointment.time.strftime("%I:%m %p") %>
+</p>
+<p>
+  <strong><%=  'Service' %>:</strong>
+  <%= @appointment.service %>
+</p>
+
+<p>
+  <strong><%=  'Patient Name' %>:</strong>
+  <%= @appointment.client_name %>
+</p>
+
+<p>
+  <strong><%=  'Patient Email' %>:</strong>
+  <%= @appointment.client_email %>
+</p>
+
+<p>
+  <strong><%= 'Patient Phone' %>:</strong>
+  <%= @appointment.client_phone %>
+</p>
+
+
+
+
+<%= link_to ('confirm'), confirm_url(@appointment),class: 'btn btn-mini btn-primary' %>
+<%= link_to ('cancel'), cancel_url(@appointment),class: 'btn btn-mini btn-danger' %>
+<br />
+<%= if @appointment.status == 'new' then link_to ('edit'), edit_appointment_path(@appointment),class: 'btn btn-mini btn-success' end %>
+
